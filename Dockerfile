@@ -54,6 +54,24 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+
+RUN export DEBIAN_FRONTEND=noninteractive \
+    && curl -s https://packages.microsoft.com/keys/microsoft.asc \
+    | apt-key add - \
+    && wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
+    && dpkg -i packages-microsoft-prod.deb  \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+    gss-ntlmssp \
+    jq \
+    bc \
+    && wget https://raw.githubusercontent.com/PowerShell/PowerShell/master/tools/install-powershell.sh -O install-powershell.sh \
+    && chmod 755 install-powershell.sh \
+    && ./install-powershell.sh -preview \
+    && ./install-powershell.sh \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN export DEBIAN_FRONTEND=noninteractive \
     && curl -s https://packages.icinga.com/icinga.key \
     | apt-key add - \
