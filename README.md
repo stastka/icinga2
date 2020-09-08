@@ -2,11 +2,12 @@
 
 This repository contains the source for the [icinga2](https://www.icinga.org/icinga2/) [docker](https://www.docker.com) image.
 
-The dockerhub-repository is located at [https://hub.docker.com/r/jordan/icinga2/](https://hub.docker.com/r/jordan/icinga2/).
+The dockerhub-repository is located at [https://hub.docker.com/r/stastka/icinga2/](https://hub.docker.com/r/stastka/icinga2/).
+Fork of https://github.com/jjethwa/icinga2
 
 This build is automated by push for the git-repo. Just crawl it via:
 
-    docker pull jordan/icinga2
+    docker pull stastka/icinga2
 
 ## Image details
 
@@ -31,13 +32,13 @@ This build is automated by push for the git-repo. Just crawl it via:
 
 Start a new container and bind to host's port 80
 
-    docker run -p 80:80 -h icinga2 -t jordan/icinga2:latest
+    docker run -p 80:80 -h icinga2 -t stastka/icinga2:latest
 
 ### docker-compose
 
 Clone the repository and create a file `secrets_sql.env`, which contains the `MYSQL_ROOT_PASSWORD` variable.
 
-    git clone https://github.com/jjethwa/icinga2.git
+    git clone https://github.com/stastka/icinga2.git
     cd icinga2
     echo "MYSQL_ROOT_PASSWORD=<password>" > secrets_sql.env
     docker-compose up
