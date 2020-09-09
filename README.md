@@ -3,11 +3,15 @@
 This repository contains the source for the [icinga2](https://www.icinga.org/icinga2/) [docker](https://www.docker.com) image.
 
 The dockerhub-repository is located at [https://hub.docker.com/r/stastka/icinga2/](https://hub.docker.com/r/stastka/icinga2/).
+
 Fork of https://github.com/jjethwa/icinga2
 
 This build is automated by push for the git-repo. Just crawl it via:
 
     docker pull stastka/icinga2
+
+Build tested on Ubuntu 20.04 LTS and Synology NAS ds716+
+
 
 ## Image details
 
@@ -25,6 +29,8 @@ This build is automated by push for the git-repo. Just crawl it via:
    - Apache2
    - SSL Support
    - Custom CA support
+   - bc and jq support
+   - Powershell Core 7 Support (Stable and Preview)
 1. No SSH. Use docker [exec](https://docs.docker.com/engine/reference/commandline/exec/) or [nsenter](https://github.com/jpetazzo/nsenter)
 1. If passwords are not supplied, they will be randomly generated and shown via stdout.
 
