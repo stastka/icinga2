@@ -1,5 +1,6 @@
 # Dockerfile for icinga2 with icingaweb2
-# https://github.com/jjethwa/icinga2 
+# https://github.com/stastka/icinga2 
+# Powershell Core Support, GSSAPI library that implements NTLM authentication , jq and bc
 
 FROM debian:buster
 
@@ -50,10 +51,11 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     supervisor \
     unzip \
     wget \
+    jq \
+    bc \
     && apt-get -y --purge remove exim4 exim4-base exim4-config exim4-daemon-light \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
 
 RUN export DEBIAN_FRONTEND=noninteractive \
     && curl -s https://packages.microsoft.com/keys/microsoft.asc \
@@ -63,8 +65,6 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
     gss-ntlmssp \
-    jq \
-    bc \
     && wget https://raw.githubusercontent.com/PowerShell/PowerShell/master/tools/install-powershell.sh -O install-powershell.sh \
     && chmod 755 install-powershell.sh \
     && ./install-powershell.sh -preview \
