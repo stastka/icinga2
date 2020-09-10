@@ -53,6 +53,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     wget \
     jq \
     bc \
+    ldap-utils \
     && apt-get -y --purge remove exim4 exim4-base exim4-config exim4-daemon-light \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -102,7 +103,7 @@ ARG GITREF_IPL=v0.3.0
 RUN mkdir -p /usr/local/share/icingaweb2/modules/ \
     # Icinga Director
     && mkdir -p /usr/local/share/icingaweb2/modules/director/ \
-    && wget -q --no-cookies -O - "https://github.com/Icinga/icingaweb2-module-director/archive/v1.7.2.tar.gz" \
+    && wget -q --no-cookies -O - "https://github.com/Icinga/icingaweb2-module-director/archive/v1.7.0.tar.gz" \
     | tar xz --strip-components=1 --directory=/usr/local/share/icingaweb2/modules/director --exclude=.gitignore -f - \
     # Icingaweb2 Graphite
     && mkdir -p /usr/local/share/icingaweb2/modules/graphite \
